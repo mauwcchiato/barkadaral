@@ -219,7 +219,7 @@ export default function Home() {
                 <div className="flex items-center gap-4">
                   <Image
                     src="/logo-mark.png"
-                    alt="BarkadAral logo: two friends high-fiving over an open book"
+                    alt="BarkadAral logo: two friends reading a book together"
                     width={112}
                     height={112}
                     className="h-20 w-20 -rotate-3 rounded-2xl bg-white p-1 shadow-card ring-1 ring-line sm:h-24 sm:w-24 lg:h-28 lg:w-28"

@@ -7,9 +7,9 @@
   --surface-2: #f2efe8;
   --line: #e6e1d6;
   --muted: #6e6a7c;
-  --accent: #1f2b5c;
-  --accent-strong: #141d42;
-  --accent-soft: #e9ecf6;
+  --accent: #2b2f36;
+  --accent-strong: #17191d;
+  --accent-soft: #fbf0d6;
   --highlight: #f9d27a;
   --good: #16803c;
   --good-soft: #e7f6ec;
@@ -20,16 +20,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #10131d;
+    --background: #131417;
     --foreground: #eeedf3;
-    --surface: #181c29;
-    --surface-2: #202536;
-    --line: #2c3245;
+    --surface: #1b1c21;
+    --surface-2: #24252b;
+    --line: #313238;
     --muted: #a09db0;
     --accent: #f0b43c;
     --accent-strong: #f6c766;
     --accent-soft: #2e2716;
-    --highlight: #2d3c7a;
+    --highlight: #7a5410;
     --good: #4ade80;
     --good-soft: #142a1c;
     --bad: #fb923c;
