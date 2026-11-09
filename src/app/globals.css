@@ -1,26 +1,145 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f6f1;
+  --foreground: #1a1a24;
+  --surface: #ffffff;
+  --surface-2: #f2efe8;
+  --line: #e6e1d6;
+  --muted: #6e6a7c;
+  --accent: #1f2b5c;
+  --accent-strong: #141d42;
+  --accent-soft: #e9ecf6;
+  --highlight: #f9d27a;
+  --good: #16803c;
+  --good-soft: #e7f6ec;
+  --bad: #c2410c;
+  --bad-soft: #fdeee4;
+  --shadow: 0 1px 2px rgb(26 26 36 / 0.04), 0 8px 24px -12px rgb(26 26 36 / 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #10131d;
+    --foreground: #eeedf3;
+    --surface: #181c29;
+    --surface-2: #202536;
+    --line: #2c3245;
+    --muted: #a09db0;
+    --accent: #f0b43c;
+    --accent-strong: #f6c766;
+    --accent-soft: #2e2716;
+    --highlight: #2d3c7a;
+    --good: #4ade80;
+    --good-soft: #142a1c;
+    --bad: #fb923c;
+    --bad-soft: #301d12;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-highlight: var(--highlight);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-display);
+  --shadow-card: var(--shadow);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Faint dot grid, like a notebook page */
+.paper-bg {
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Highlighter stroke behind a word */
+.highlight {
+  background: linear-gradient(transparent 38%, var(--highlight) 38%, var(--highlight) 70%, transparent 70%);
+  padding: 0 0.1em;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-4 py-2.5 font-medium text-white shadow-sm transition hover:bg-accent-strong active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100 dark:text-[#121118];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-surface px-4 py-2.5 font-medium transition hover:border-accent/50 hover:bg-surface-2 active:scale-[0.98] disabled:opacity-40;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-foreground;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-surface shadow-card;
+  }
+}
+
+/* Flashcard flip */
+.flip-card {
+  perspective: 1400px;
+}
+.flip-inner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.55s cubic-bezier(0.3, 0.7, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  text-align: center;
+  backface-visibility: hidden;
+  overflow-y: auto;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-rise {
+  animation: rise 0.4s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner,
+  .animate-rise {
+    transition: none;
+    animation: none;
+  }
 }
