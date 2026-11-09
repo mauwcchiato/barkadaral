@@ -4,9 +4,9 @@
 
 **Barkada + aral**: your AI study barkada. An AI study tool: paste your lecture notes (or upload a PDF) and get a **summary**, **flashcards** and a **practice quiz** in seconds.
 
-**Live demo:** _add your Vercel link here_
+**Live demo:** https://barkadaral.vercel.app
 
-![Screenshot](docs/screenshot.png) <!-- add a screenshot after deploying -->
+
 
 ## Features
 

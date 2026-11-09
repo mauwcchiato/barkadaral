@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   description:
     "Paste your notes or upload a PDF and get a summary, flashcards, and a practice quiz in seconds.",
   authors: [{ name: "Jhan Maurice De Roxas" }],
+  metadataBase: new URL("https://barkadaral.vercel.app"),
   openGraph: {
     title: "BarkadAral – your AI study barkada",
     description: "Turn your notes into a summary, flashcards and a practice quiz in seconds.",
